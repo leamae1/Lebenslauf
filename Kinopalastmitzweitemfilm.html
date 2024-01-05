@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>Kino-Reservierung Version 0.2</title>
+  <style type="text/css">
+
+div {
+    background: linear-gradient(to top, #996633 0%, #000000 90%);
+}
+ img {
+  
+
+}
+body { 
+
+ margin-left: 15%;
+ margin-right: 15%;
+ padding: 10px 10px 10px 40px;
+ font-family: Trebuchet MS ;
+ font-size: medium;
+ font-weight: bold;
+ color:   #ffe6cc ;
+ background-image: url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80);
+}
+ =-->
+
+</style>
+
+<script type="text/javascript">
+var Gespraech = "";
+var AnzahlKarten=0;
+var Filmname="";
+var Gesamtpreis=0;
+var RestkartenAvatar=20
+var RestkartenInception=50
+var RestkartenAvengers=50
+const Normalpreis=6;
+var Reservierungsnummer= 1456;
+function NeuesGespraech() {
+AnzahlKarten=0;
+Gesamtpreis=0;
+Gespraech='Willkommen im Kino-Bijou ! Welchen Film möchten Sie sehen?';
+
+if (RestkartenAvatar<1)
+  {
+      Filmname="Avatar";
+      Gespraech= Gespraech+" Die Vorstellung "+Filmname+" ist leider schon Ausverkauft!";
+    }
+
+    if (RestkartenInception<1)
+  {
+      Filmname="Inception";
+      Gespraech= Gespraech+" Die Vorstellung "+Filmname+" ist leider schon Ausverkauft!";
+    }
+
+    if (RestkartenAvengers<1)
+  {
+      Filmname="Avengers";
+      Gespraech= Gespraech+" Die Vorstellung "+Filmname+" ist leider schon Ausverkauft!";
+    }
+
+document.f.Chat.value=Gespraech;
+
+ }
+
+function NeueAntwort() {
+Antwort=document.f.Antwort.value;
+Gespraech=Gespraech+"\n"+"Kunde: "+Antwort;
+
+if (Filmname=="" && Antwort.toLowerCase().indexOf("avatar")>-1 && RestkartenAvatar>0)
+    {
+      Filmname="Avatar";
+      Gespraech= Gespraech+"\n"+"Sie möchten also "+Filmname+" sehen.";
+    }
+
+if (Filmname=="" && Antwort.toLowerCase().indexOf("inception")>-1 && RestkartenInception>0)
+    {
+      Filmname="Inception";
+      Gespraech= Gespraech+"\n"+"Sie möchten also "+Filmname+" sehen.";
+    }
+
+if (Filmname=="" && Antwort.toLowerCase().indexOf("avengers")>-1 && RestkartenAvengers>0)
+    {
+      Filmname="Avengers";
+      Gespraech= Gespraech+"\n"+"Sie möchten also "+Filmname+" sehen.";
+    }
+
+
+if (Filmname=="Avatar" && AnzahlKarten==0 && document.f.Antwort.value == parseInt(document.f.Antwort.value) && RestkartenAvatar>=parseInt(document.f.Antwort.value) )
+    {
+       AnzahlKarten=document.f.Antwort.value;
+       RestkartenAvatar=RestkartenAvatar-AnzahlKarten;
+       Gespraech= Gespraech+"\n"+"Sie möchten also "+document.f.Antwort.value+" Karten.";
+       document.f.Antwort.value="";
+    }
+
+if (Filmname=="Inception" && AnzahlKarten==0 && document.f.Antwort.value == parseInt(document.f.Antwort.value) && RestkartenInception>=parseInt(document.f.Antwort.value) )
+    {
+       AnzahlKarten=document.f.Antwort.value;
+       RestkartenInception=RestkartenInception-AnzahlKarten;
+       Gespraech= Gespraech+"\n"+"Sie möchten also "+document.f.Antwort.value+" Karten.";
+       document.f.Antwort.value="";
+    }
+if (Filmname=="Avengers" && AnzahlKarten==0 && document.f.Antwort.value == parseInt(document.f.Antwort.value) && RestkartenAvengers>=parseInt(document.f.Antwort.value) )
+    {
+       AnzahlKarten=document.f.Antwort.value;
+       RestkartenAvengers=RestkartenAvengers-AnzahlKarten;
+       Gespraech= Gespraech+"\n"+"Sie möchten also "+document.f.Antwort.value+" Karten.";
+       document.f.Antwort.value="";
+    }
+
+
+if (Filmname=="Avatar" && AnzahlKarten==0 && document.f.Antwort.value == parseInt(document.f.Antwort.value) && RestkartenAvatar<=parseInt(document.f.Antwort.value) )
+{
+    Gespraech= Gespraech+"\n"+"Es tut uns leid, wir haben nur noch "+RestkartenAvatar+" Karten für Avatar. Wie viele Karten möchten Sie bestellen?";
+}
+
+if (Filmname=="Inception" && AnzahlKarten==0 && document.f.Antwort.value == parseInt(document.f.Antwort.value) && RestkartenInception<=parseInt(document.f.Antwort.value) )
+{
+    Gespraech= Gespraech+"\n"+"Es tut uns leid, wir haben nur noch "+RestkartenInception+" Karten für Inception. Wie viele Karten möchten Sie bestellen?";
+}
+
+if (Filmname=="Avengers" && AnzahlKarten==0 && document.f.Antwort.value == parseInt(document.f.Antwort.value) && RestkartenAvengers<=parseInt(document.f.Antwort.value) )
+{
+    Gespraech= Gespraech+"\n"+"Es tut uns leid, wir haben nur noch "+RestkartenAvengers+" Karten für Avengers. Wie viele Karten möchten Sie bestellen?";
+}
+
+else if (Filmname=="Inception" && AnzahlKarten==0)
+    {
+       Gespraech= Gespraech+"\n"+"Wie viele Karten möchten Sie bestellen?";
+    }
+       
+else if (Filmname=="Avatar" && AnzahlKarten==0)
+    {
+       Gespraech= Gespraech+"\n"+"Wie viele Karten möchten Sie bestellen?";
+    }
+else if (Filmname=="Avengers" && AnzahlKarten==0)
+    {
+       Gespraech= Gespraech+"\n"+"Wie viele Karten möchten Sie bestellen?";
+    }
+
+if  (Filmname!="" && AnzahlKarten>0)
+    {
+
+     Gesamtpreis=AnzahlKarten*Normalpreis;
+     Gespraech= Gespraech+"\n"+"Wir haben "+AnzahlKarten+" Karten für "+Filmname+" zurückgelegt.";
+     Gespraech= Gespraech+"\n"+"Der Gesamtpreis beträgt "+Gesamtpreis+ " Euro. Bitte holen Sie mit Ihrer Reservierungsnummer die Karten 15 min vor Filmbeginn ab. Ihre Reservierungsnummer lautet "+ Reservierungsnummer;
+       Reservierungsnummer=Reservierungsnummer+ 1;
+   //Reservierungsnummer++;
+    }
+document.f.Chat.value=Gespraech; 
+document.f.Antwort.value="";
+return false;
+document.f.Antwort.focus();
+
+      }
+</script></head>
+
+<center><h1>Kino-Bijou </h1></center>
+<div>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg th{font-family:Arial, sans-serif;font-size:15px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+</style>
+<table class="tg">
+  <tr>
+  <th class>Willkommen zu unserem brand neuen Kino-Bijou!</th>
+   <tr>
+    <th class="tg-031e">Freuen Sie sich auf Kino-Komfort, den Sie so bisher noch nicht erlebt haben: Vom Doorman, über die Garderobe und den Begrüßungscocktail bis hin zum verstellbaren Liegesessel in den Kinosälen, Bedienung am Platz und 240 Parkplätzen direkt im Gebäude. Wir möchten, dass Ihr Kino Besuch zu einem Kino Erlebnis wird. Wir wünschen Ihnen viel Spaß und eine unvergessliche Zeit in unserem Kino-Bijou. </th>
+</div>
+</table>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:15px;padding:10px 20px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+
+</style>
+    <center>
+<table class="tg">
+
+  <tr>  <tr>
+
+  <td class="tg-031e">UNSER PROGRAMM:</td>
+  </tr>
+    <td class="tg-031e"><img src="https://m.media-amazon.com/images/I/41zWyLXIetL._AC_.jpg"style="width:140px;height:180px;margin-left:15px;"></td>
+    <td class="tg-031e"><img src="https://m.media-amazon.com/images/I/61Ug+K8o5FL._AC_.jpg"style="width:140px;height:180px;margin-left:15px;"></td>
+     <td class="tg-031e"><img src="https://m.media-amazon.com/images/I/51SiCx-onBL._AC_.jpg"style="width:140px;height:180px;margin-left:15px;"></td>
+  </tr>
+</table>
+
+</p>
+<body>
+
+<h2>Kino-kartenreservierung</h2>
+<form name="f" onsubmit="return NeueAntwort();">
+<button type="button" onclick="NeuesGespraech();">
+Neues Gespr&auml;ch</button>
+                                                                                                  <br><br>
+ Ihre Antwort:
+ <input type='Text' name='Antwort' value='' size='60' maxlength=''><br>
+<br>
+<textarea cols="100" rows="15" name="Chat">
+</textarea>
+ 
+ <br><br>
+</center>
+</form>
+</body>
+</html>
