@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>C&auml;sar-Verschl&uuml;sselung</title>
+<meta name="author" content="RB"><meta name="editor" content="html-editor phase 5">
+</head>
+<body link="#FF0000" alink="#FF0000" vlink="#FF0000">
+
+<style type="text/css">
+ <!--
+body {
+ background: url(https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWF0cml4fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);
+ margin-left: 20%;
+ margin-right: 20%;
+ padding: 10px 10px 10px 40px;
+ }
+
+ .logo {
+  width: 240px;
+  height: auto;
+  display: block;
+  margin: 60px 40px;
+}
+ =-->
+
+ a:hover, a:active {
+  background-color: red;
+}
+
+a:link {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+  background-color: transparent;
+  
+}
+</style>
+
+
+<div class="wp_b_box">
+       <style type="text/css">
+             .wp_b_box {
+                 padding: 15px;
+                 background: #0d0d0d;
+                 color: #009933;
+                 border-radius: 15px;
+                 font-size: medium;
+                 font-weight: bold;
+                 font-family: Copperplate;
+               </style>
+
+
+<script language="JavaScript">
+<!--
+function Felder_leeren() {
+document.form1.eingabe.value='';
+document.form1.ausgabe.value='';
+document.form1.ausgabe_h.value='';
+}
+
+
+function Bespieltext1() {
+document.form1.eingabe.value='DIE KRYPOTOLOGIE IST EINE ALTE WISSENSCHAFT';
+}
+
+function Bespieltext2() {
+document.form1.eingabe.value='EINE VERSCHLUESSELTE NACHRICHT MUSS IN DER REGEL UEBER MEHERE STATIONEN UEBERTRAGEN WERDEN. HEUTE HANDELT ES SICH DABEI MEIST UM EINZELNE COMPUTERSYSTEME, DAS HEISST DIE VERSCHLUESSELTE NACHRICHT WIRD ÜBER EIN RECHNERNETZWERK UEBERTRAGEN. MAN UNTERSCHEIDET DABEI ZWEI GRUNDLEGEND UNTERSCHIDLICHE ÜBERTRAGUNGSWEISEN. BEI DER LEISTUNGVERSCHLUESSELUNG WIRD DIE NACHRICHT NUR JEWEILS FÜR DEN NACHBARRECHNER VERSCHLUESSELT. DIESER ENTSCHLUESSELT DIE NACHRICHT, VERSCHLUESSELT SIE WIEDERUM UND SCHICKT SIE AN SEINEN NACHBARN – UND SO WEITER BIS ZUM ZIELRECHNER. DER VORTEIL DISES VERFAHRENS BESTEHT DARIN, DASS SICH JEWEILS NUR NACHBARRECHNER AUF EIN VERSCHLUESSELUNGSVERFAHREN UND VERWENDETE SCHLÜSSEL EINIGEN MUESSEN. DARUEBER HINAUS KANN DIESE UEBERTRAGUNGSWEISE AUF EINER SEHR NIEDRIGEN PROTOKOLLEBENE ANGESIEDELT WERDEN. ';
+}
+
+function Bespieltext3() {
+document.form1.eingabe.value='DIE UHRSPRUENGLICHE POLYBIOS TAFEL BESTEHT AUS EINER FUENF MAL FUENF MATRIX';
+}
+
+
+function Atbash_verschluesseln() {
+document.form1.ausgabe.value=document.form1.ausgabe.value.toUpperCase();
+klartext=document.form1.eingabe.value;
+geheimtext="";
+for (i=0; i<klartext.length ; i++ ) {  
+
+ codeNr=klartext.charCodeAt(i);
+
+ if (codeNr>=65 && codeNr<=90) 
+  { codeNr = 65 + (90-codeNr);} 
+ geheimtext=geheimtext+String.fromCharCode(codeNr);
+}
+document.form1.ausgabe.value = geheimtext; 
+}
+
+
+function Atbash_entschluesseln() {
+document.form1.ausgabe.value=document.form1.ausgabe.value.toUpperCase();
+geheimtext=document.form1.ausgabe.value;
+klartext="";
+for (i=0; i<geheimtext.length ; i++ ) {  
+
+ codeNr=geheimtext.charCodeAt(i);
+
+ if (codeNr>=65 && codeNr<=90) 
+  { codeNr = 65 + (90-codeNr);} 
+ klartext=klartext+String.fromCharCode(codeNr);
+}
+document.form1.eingabe.value = klartext; 
+}
+
+function Caesar_verschluesseln() {
+document.form1.eingabe.value=document.form1.eingabe.value.toUpperCase();
+klartext=document.form1.eingabe.value;
+verschiebung=eval(document.form1.verschiebung.value);
+geheimtext="";
+for (i=0; i<klartext.length ; i++ ) {
+codeNr=klartext.charCodeAt(i);
+neueCodeNr=codeNr+verschiebung;
+if (neueCodeNr>90) {neueCodeNr=neueCodeNr-26;}
+if(neueCodeNr>=65 && neueCodeNr<=90) {
+geheimtext=geheimtext+String.fromCharCode(neueCodeNr);
+}
+}
+
+document.form1.ausgabe.value = geheimtext;
+}
+
+function Caesar_entschluesseln() {
+document.form1.ausgabe.value=document.form1.ausgabe.value.toUpperCase();
+geheimtext=document.form1.ausgabe.value;
+verschiebung=eval(document.form1.verschiebung.value);
+geheimtext="";
+for (i=0; i<geheimtext.length ; i++ ) {
+codeNr=geheimtext.charCodeAt(i);
+neueCodeNr=codeNr-verschiebung;
+if (neueCodeNr<65) {neueCodeNr=neueCodeNr+26;}
+klartext=klartext+String.fromCharCode(neueCodeNr);
+}
+document.form1.eingabe.value = klartext;
+}
+
+function Alberti() {
+document.form1.eingabe.value=document.form1.eingabe.value.toUpperCase();
+klartext=document.form1.eingabe.value;
+verschiebung1=3;
+verschiebung2=5; 
+geheimtext="";
+for (i=0; i<klartext.length ; i++ ) {
+codeNr=klartext.charCodeAt(i);
+if (i%2==1)
+  { neueCodeNr=codeNr+verschiebung1; }
+else
+  { neueCodeNr=codeNr+verschiebung2; }
+if (neueCodeNr>90) {neueCodeNr=neueCodeNr-26;}
+geheimtext=geheimtext+String.fromCharCode(neueCodeNr);
+}
+document.form1.ausgabe.value = geheimtext;
+}
+
+
+function verschluesselnVigenere() {
+klartext=document.form1.eingabe.value;
+schluessel=document.form1.VigenereSchluessel.value;
+geheimtext="";
+for (i=0; i<klartext.length ; i++ ) {
+verschiebung= schluessel.charCodeAt(i%schluessel.length)-65;
+codeNr=klartext.charCodeAt(i);
+if (codeNr>=65 && codeNr<=90)
+{neueCodeNr=codeNr+verschiebung;}
+else
+{neueCodeNr=codeNr;}
+if (neueCodeNr>90) {neueCodeNr=neueCodeNr-26;}
+geheimtext=geheimtext+String.fromCharCode(neueCodeNr);
+}
+document.form1.ausgabe.value = geheimtext;
+}
+
+function Haufigkeit(){  
+Anz_A=0;
+Anz_B=0; Anz_C=0; Anz_D=0; Anz_E=0;
+Anz_F=0; Anz_G=0; Anz_H=0; Anz_I=0;
+Anz_J=0; Anz_K=0; Anz_L=0; Anz_M=0;
+Anz_N=0; Anz_O=0; Anz_P=0; Anz_Q=0;
+Anz_R=0; Anz_S=0; Anz_T=0; Anz_U=0;
+Anz_V=0; Anz_W=0; Anz_X=0; Anz_Y=0;
+Anz_Z=0; 
+///(...)
+geheimtext=document.form1.ausgabe.value;
+for (i=0; i < geheimtext.length; i++) {
+if (geheimtext.charAt(i)=="A") {Anz_A++;}
+if (geheimtext.charAt(i)=="B") {Anz_B++;}
+if (geheimtext.charAt(i)=="C") {Anz_C++;}
+if (geheimtext.charAt(i)=="D") {Anz_D++;}
+if (geheimtext.charAt(i)=="E") {Anz_E++;}
+if (geheimtext.charAt(i)=="F") {Anz_F++;}
+if (geheimtext.charAt(i)=="G") {Anz_G++;}
+if (geheimtext.charAt(i)=="H") {Anz_H++;}
+if (geheimtext.charAt(i)=="I") {Anz_I++;}
+if (geheimtext.charAt(i)=="J") {Anz_J++;}
+if (geheimtext.charAt(i)=="K") {Anz_K++;}
+if (geheimtext.charAt(i)=="L") {Anz_L++;}
+if (geheimtext.charAt(i)=="M") {Anz_M++;}
+if (geheimtext.charAt(i)=="N") {Anz_N++;}
+if (geheimtext.charAt(i)=="O") {Anz_O++;}
+if (geheimtext.charAt(i)=="P") {Anz_P++;}
+if (geheimtext.charAt(i)=="Q") {Anz_Q++;}
+if (geheimtext.charAt(i)=="R") {Anz_R++;}
+if (geheimtext.charAt(i)=="S") {Anz_S++;}
+if (geheimtext.charAt(i)=="T") {Anz_T++;}
+if (geheimtext.charAt(i)=="U") {Anz_U++;}
+if (geheimtext.charAt(i)=="V") {Anz_V++;}
+if (geheimtext.charAt(i)=="W") {Anz_W++;}
+if (geheimtext.charAt(i)=="X") {Anz_X++;}
+if (geheimtext.charAt(i)=="Y") {Anz_Y++;}
+if (geheimtext.charAt(i)=="Z") {Anz_Z++;}
+}
+// (...)
+document.form1.ausgabe_h.value= "A: "+Anz_A+ " B: "+Anz_B+ " C: "+Anz_C+ " D: "+Anz_D+ " E: "+Anz_E+ " F: "+Anz_F+ " G: "+Anz_G+ " H: "+Anz_H+ " I: "+Anz_I+ " J: "+Anz_J+ " K: "+Anz_K+ " L: "+Anz_L+ " M: "+Anz_M+ " N: "+Anz_N+ " O: "+Anz_O+ " P: "+Anz_P + " Q: "+Anz_Q+ " R: "+Anz_R+ " S: "+Anz_S+ " T: "+Anz_T+ " U: "+Anz_U+ " V: "+Anz_V+ " W: "+Anz_W+ " X: "+Anz_X+ " Y: "+Anz_Y+ " Z: "+Anz_Z;
+
+}
+
+function Polybios() {
+document.form1.eingabe.value=document.form1.eingabe.value.toUpperCase();
+klartext=document.form1.eingabe.value;
+geheimtext="";
+for (i=0; i<klartext.length ; i++ ) {
+codeNr=klartext.charCodeAt(i);
+if (codeNr==65) {Chiffrezeichen="31";}
+if (codeNr==66) {Chiffrezeichen="53";}
+if (codeNr==67) {Chiffrezeichen="51";}
+if (codeNr==68) {Chiffrezeichen="33";}
+if (codeNr==69) {Chiffrezeichen="13";}
+if (codeNr==70) {Chiffrezeichen="34";}
+if (codeNr==71) {Chiffrezeichen="35";}
+if (codeNr==72) {Chiffrezeichen="41";}
+if (codeNr==73) {Chiffrezeichen="23";}
+if (codeNr==74) {Chiffrezeichen="23";}
+if (codeNr==75) {Chiffrezeichen="42";}
+if (codeNr==76) {Chiffrezeichen="43";}
+if (codeNr==77) {Chiffrezeichen="55";}
+if (codeNr==78) {Chiffrezeichen="54";}
+if (codeNr==79) {Chiffrezeichen="24";}
+if (codeNr==80) {Chiffrezeichen="25";}
+if (codeNr==81) {Chiffrezeichen="11";}
+if (codeNr==82) {Chiffrezeichen="14";}
+if (codeNr==83) {Chiffrezeichen="32";}
+if (codeNr==84) {Chiffrezeichen="15";}
+if (codeNr==85) {Chiffrezeichen="22";}
+if (codeNr==86) {Chiffrezeichen="52";}
+if (codeNr==87) {Chiffrezeichen="12";}
+if (codeNr==88) {Chiffrezeichen="45";}
+if (codeNr==89) {Chiffrezeichen="44";}
+if (codeNr==90) {Chiffrezeichen="21";}
+
+
+
+geheimtext=geheimtext+ Chiffrezeichen;
+}
+document.form1.ausgabe.value = geheimtext;
+}
+
+//-->
+</script>
+
+<center>
+  <!-- ########### Dies ist das Logo ############## -->
+  <img src="Logo2.png" alt="Kryptologie" class="logo">
+
+<form name="form1" action="Caesar_mit_Formular.html">
+<h1>C&auml;sar-Verschl&uuml;sselung</h1>
+Der Name der Caesar-Verschl&uuml;sselung geht auf <i>Gaius Julius Caesar</i> (100 - 44 v. Chr.) zur&uuml;ck,
+der diese Art der Verschl&uuml;sselung f&uuml;r seine milit&auml;rische Korrespondenz verwendet hat.
+
+<!-- ########### Textfeld: Klartext ############## -->
+<h2>Klartext:</h2>
+<textarea name="eingabe" cols="65" rows="6">Gebe hier deinen Text ein...</textarea>
+
+<!-- ###########  Verschiebung für Caesar  ############## -->
+<h2>Verschiebung: <input type="text" size="4" value=3 name="verschiebung"/></h2>
+
+
+<!-- ########### Hier stehen alle Buttons ############## -->
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:15px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-pxma"><button type="button" onclick="Bespieltext1();">Bespieltext 1</button> </th>
+    <th class="tg-pxma"><button type="button" onclick="Bespieltext2();">Bespieltext 2</button></th>
+    <th class="tg-031e"><button type="button" onclick="Bespieltext3();">Bespieltext 3</button></th>
+  </tr>
+</table>
+
+
+<button type="button" onclick="Atbash_verschluesseln();">Atbash verschl&uuml;sseln</button> I
+
+<button type="button" onclick="Atbash_entschluesseln();">Atbash entschl&uuml;sseln</button>  <br>
+
+<button type="button" onclick="Caesar_verschluesseln();">Caesar verschl&uuml;sseln</button> I
+
+<button type="button" onclick="Caesar_entschluesseln();">Caesar entschl&uuml;sseln</button> <br><br>
+
+<button type="button" onclick="Alberti();">Alberti!</button> <br>
+
+<button type="button" onclick="Polybios();">Polybios!</button> <br>
+
+<button type="button" onclick="Felder_leeren();">Felder leeren</button>
+
+<!-- ########### Textfeld: Geheimtext ############## -->
+<h2>Geheimtext:</h2>
+<textarea name="ausgabe" cols="65" rows="6"></textarea><br><br>
+
+<!-- ########### Textfeld: Haufigkeitsanalyse ############## -->
+
+
+<h2>H&auml;ufigkeitsanalyse:</h2>
+<textarea name="ausgabe_h" cols="65" rows="6"></textarea><br><br>
+<button type="button" onclick="Haufigkeit()">H&auml;ufigkeit im Geheimtext</button> <br><br>
+
+<br><br>
+
+</center>
+<!-- ########### Hier ist das Kryptologie Glossar ############## -->
+
+<A HREF="menue1.html">Hier gehts zum Men&uuml;</A>
+
+
+</form>
+</body>
+</html>
